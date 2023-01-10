@@ -7,6 +7,7 @@ export interface INote {
   body: string;
   creation: Date;
   topic: ITopic;
+  
 }
 
 export type TNoteGetResponse = IPaginationResponse<INote>;

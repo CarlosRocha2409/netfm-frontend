@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import tw, { styled } from "twin.macro";
 import note from "@/assets/page-pattern.jpg";
 import bg from "@/assets/bg-pattern.png";
+import NewButton from "./NewButton";
 
 const LContainer = styled.main`
   box-shadow: inset 10000px 1000px rgba(0, 0, 0, 0.37);
@@ -18,7 +19,7 @@ const LNoteBook = styled.div`
 `;
 
 const LTitle = styled.h1`
-  ${tw`font-marker text-4xl`}
+  ${tw`font-marker text-2xl md:text-4xl`}
 `;
 
 const NotesContainer = styled.div`
@@ -44,7 +45,9 @@ export default function Layout({ children }: ILayoutProps) {
           backgroundImage: `url(${note})`,
         }}
       >
-        <LTitle>My Notebook</LTitle>
+        <LTitle>
+          My Notebook <NewButton />
+        </LTitle>
         <NotesContainer>{children}</NotesContainer>
       </LNoteBook>
     </LContainer>

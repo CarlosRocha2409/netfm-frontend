@@ -3,13 +3,25 @@ import { convertDate } from "@/utils/api.utils";
 import tw, { styled } from "twin.macro";
 
 import noteImg from "@/assets/note.png";
+import edit from "@/assets/edit.png";
+import { Link } from "react-router-dom";
 
 const NContainer = styled.div``;
 const NHeader = styled.div`
-  ${tw`flex justify-between items-center`}
+  ${tw`grid grid-cols-1 md:flex md:justify-between items-center`}
+
+  div {
+    ${tw`flex gap-2 items-center`}
+    img {
+      ${tw`w-5 h-5 duration-300`}
+      &:hover {
+        transform: translateY(-5px);
+      }
+    }
+  }
 
   h3 {
-    ${tw`font-marker text-2xl m-0 self-start`}
+    ${tw`font-marker text-2xl m-0 self-start duration-500 hover:text-secondary-dark`}
   }
   h4 {
     ${tw`self-end text-left font-pen text-xl`}
@@ -35,7 +47,14 @@ export default function Note({ note }: INoteProps) {
   return (
     <NContainer>
       <NHeader>
-        <h3>{note.title}</h3>
+        <div>
+          <Link to={`/${note.id}`}>
+            <h3>{note.title}</h3>
+          </Link>
+          <Link to={`/${note.id}/edit`}>
+            <img src={edit} alt="edit" />
+          </Link>
+        </div>
         <h4>{convertDate(note.creation)}</h4>
       </NHeader>
       <NBody>

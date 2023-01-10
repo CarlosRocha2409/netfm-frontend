@@ -5,7 +5,8 @@ import { useMemo } from "react";
 import { useInfiniteQuery } from "react-query";
 import fetchNotes from "../api/fetchNotes";
 
-export default function useTicketsGet() {
+
+export default function useGetNotes() {
   const { order, title, body } = useNoteQueryStore((state) => state);
   const query = useInfiniteQuery<TNoteGetResponse>(
     ["notes", order, title, body],
