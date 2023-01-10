@@ -1,13 +1,9 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const token = localStorage.getItem("token");
 const api = axios.create({
   baseURL: import.meta.env.VITE_BACKEND,
   timeout: 1000,
-  headers: {
-    authorization: `Bearer ${token}`,
-  },
 });
 
 axios.interceptors.request.use(
@@ -24,7 +20,7 @@ api.interceptors.response.use(
     return response;
   },
   function (error) {
-    toast.error(error.response.data.message);
+    // toast.error(error.response.data.message);
     return Promise.reject(error);
   }
 );
