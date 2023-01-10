@@ -1,4 +1,6 @@
+import React from "react";
 import usePostNote from "@/hooks/usePostNote";
+import usePutNote from "@/hooks/usePutNote";
 import { INote, INoteInput } from "@/types/note.type";
 import { useForm } from "react-hook-form";
 import tw, { styled } from "twin.macro";
@@ -7,6 +9,7 @@ import FormControl from "../forms/FormControl";
 import Input from "../forms/Input";
 import TextArea from "../forms/TextArea";
 import SelectTopic from "../general/SelectTopic";
+import Spinner from "../general/Spinner";
 
 const NFForm = styled.form`
   ${tw`flex flex-col gap-3`}
@@ -32,11 +35,15 @@ export default function NoteForm({ note }: INoteFormProps) {
     },
   });
 
-  const { mutate: create } = usePostNote();
+  const { mutate: create, isLoading: isCreating } = usePostNote();
+  const { mutate: edit, isLoading: isEditing } = usePutNote();
 
   const handleNoteFormSubmit = (data: INoteInput) => {
     if (note) {
-      return;
+      edit({
+        id: note.id,
+        ...data,
+      });
     } else {
       create(data);
     }
@@ -70,7 +77,13 @@ export default function NoteForm({ note }: INoteFormProps) {
           })}
         />
       </FormControl>
-      <Button type="submit">Add Note</Button>
+      <Button type="submit">
+        {!isCreating && !isEditing ? (
+          <>{note ? "Edit" : "Create"} Note</>
+        ) : (
+          <Spinner />
+        )}
+      </Button>
     </NFForm>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useMemo, useRef } from "react";
-import useTicketsGet from "@/hooks/useGetNotes";
+import useGetNotes from "@/hooks/useGetNotes";
 import InfiniteScroll from "react-infinite-scroll-component";
 import tw, { styled } from "twin.macro";
 import Note from "./Note";
@@ -20,7 +20,7 @@ const NoteList = styled.div`
 `;
 
 export default function NoteBookHome() {
-  const { hasNextPage, fetchNextPage, notes, refetch } = useTicketsGet();
+  const { hasNextPage, fetchNextPage, notes, refetch } = useGetNotes();
   const containerRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 

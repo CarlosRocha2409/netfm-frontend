@@ -1,14 +1,14 @@
-import postNote from "@/api/postNote";
+import putNote from "@/api/putNote";
 import { toastSuccess } from "@/utils/toast.utils";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 
-export default function usePostNote() {
+export default function usePutNote() {
   const navigate = useNavigate();
-  return useMutation(postNote, {
-    mutationKey: ["noteCreate"],
+  return useMutation(putNote, {
+    mutationKey: ["noteEdit"],
     onSuccess: () => {
-      toastSuccess("Succesfully posted note");
+      toastSuccess("Succesfully edited note");
       navigate("/");
     },
   });
