@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import tw, { styled } from "twin.macro";
 
-const SIContainer = styled.form`
+const SearchInputContainer = styled.form`
   ${tw`grid grid-cols-1 xl:grid-cols-[70% 30%] gap-1`}
   div {
     ${tw`grid grid-cols-1 xl:grid-cols-[50% 50%]`}
@@ -39,7 +39,7 @@ export default function SearchInput({ sync }: { sync: () => void }) {
 
   return (
     <FormControl label="Search" errorMsg={errors.text?.message}>
-      <SIContainer onSubmit={handleSubmit(searchNotes)}>
+      <SearchInputContainer onSubmit={handleSubmit(searchNotes)}>
         <div className="bg-secondary-dark">
           <Input
             {...register("text", { required: "Cannot search an empty string" })}
@@ -50,7 +50,7 @@ export default function SearchInput({ sync }: { sync: () => void }) {
           </Select>
         </div>
         <Button type="submit">Search</Button>
-      </SIContainer>
+      </SearchInputContainer>
     </FormControl>
   );
 }

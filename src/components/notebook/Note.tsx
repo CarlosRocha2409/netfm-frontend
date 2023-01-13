@@ -6,8 +6,8 @@ import noteImg from "@/assets/note.png";
 import edit from "@/assets/edit.png";
 import { Link } from "react-router-dom";
 
-const NContainer = styled.div``;
-const NHeader = styled.div`
+const NoteContainer = styled.div``;
+const NoteHeader = styled.div`
   ${tw`grid grid-cols-1 md:flex md:justify-between items-center`}
 
   div {
@@ -27,7 +27,7 @@ const NHeader = styled.div`
     ${tw`self-end text-left font-pen text-xl`}
   }
 `;
-const NBody = styled.div`
+const NoteBody = styled.div`
   p {
     ${tw`font-pen text-lg`}
   }
@@ -45,8 +45,8 @@ interface INoteProps {
 
 export default function Note({ note }: INoteProps) {
   return (
-    <NContainer>
-      <NHeader>
+    <NoteContainer>
+      <NoteHeader>
         <div>
           <Link to={`/${note.id}`}>
             <h3>{note.title}</h3>
@@ -55,15 +55,15 @@ export default function Note({ note }: INoteProps) {
             <img src={edit} alt="edit" />
           </Link>
         </div>
-        <h4>{convertDate(note.creation)}</h4>
-      </NHeader>
-      <NBody>
+        <h4>{convertDate(note.date)}</h4>
+      </NoteHeader>
+      <NoteBody>
         <div>
           <img src={noteImg} />
           <h5>{note.topic.title}</h5>
         </div>
         <p>{note.body}</p>
-      </NBody>
-    </NContainer>
+      </NoteBody>
+    </NoteContainer>
   );
 }

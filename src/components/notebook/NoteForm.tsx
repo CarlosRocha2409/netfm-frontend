@@ -11,10 +11,10 @@ import TextArea from "../forms/TextArea";
 import SelectTopic from "../general/SelectTopic";
 import Spinner from "../general/Spinner";
 
-const NFForm = styled.form`
+const NoteFormContainer = styled.form`
   ${tw`flex flex-col gap-3`}
 `;
-const NRowForm = styled.div`
+const NoteRowForm = styled.div`
   ${tw`grid grid-cols-2  gap-4`}
 `;
 
@@ -50,8 +50,8 @@ export default function NoteForm({ note }: INoteFormProps) {
   };
 
   return (
-    <NFForm onSubmit={handleSubmit(handleNoteFormSubmit)}>
-      <NRowForm>
+    <NoteFormContainer onSubmit={handleSubmit(handleNoteFormSubmit)}>
+      <NoteRowForm>
         <FormControl
           label="Title"
           required={true}
@@ -67,7 +67,7 @@ export default function NoteForm({ note }: INoteFormProps) {
         <FormControl label="Topic">
           <SelectTopic register={register("topicId")} />
         </FormControl>
-      </NRowForm>
+      </NoteRowForm>
 
       <FormControl label="Body" required={true} errorMsg={errors.body?.message}>
         <TextArea
@@ -84,6 +84,6 @@ export default function NoteForm({ note }: INoteFormProps) {
           <Spinner />
         )}
       </Button>
-    </NFForm>
+    </NoteFormContainer>
   );
 }
