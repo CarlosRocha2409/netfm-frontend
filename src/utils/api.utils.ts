@@ -10,5 +10,12 @@ export function handleQuery<T>(lastPage: IPaginationResponse<T>) {
 }
 
 export function convertDate(date: Date) {
-  return new Date(date).toLocaleString("en-us", { hour12: true });
+  const now = new Date(date);
+  const covnvertedDate = new Date(
+    now.getTime() - now.getTimezoneOffset() * 60000
+  );
+  return new Date(covnvertedDate).toLocaleString(undefined, {
+    hour12: true,
+    timeZone: "America/Managua",
+  });
 }

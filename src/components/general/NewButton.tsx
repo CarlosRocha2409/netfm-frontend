@@ -5,7 +5,7 @@ import goback from "@/assets/return.png";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-const NButton = styled(Button)`
+const NewBtn = styled(Button)`
   ${tw`rounded-full`}
   img {
     ${tw`h-6`}
@@ -28,9 +28,9 @@ export default function NewButton() {
     }
   };
   return (
-    <NButton onClick={handleButtonAction}>
+    <NewBtn onClick={handleButtonAction}>
       {location.pathname === "/" && <img src={plus} alt="plus" />}
       {location.pathname !== "/" && <img src={goback} alt="goback" />}
-    </NButton>
+    </NewBtn>
   );
 }

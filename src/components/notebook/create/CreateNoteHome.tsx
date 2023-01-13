@@ -1,7 +1,7 @@
 import tw, { styled } from "twin.macro";
 import NoteForm from "../NoteForm";
 
-const CNhome = styled.div`
+const CreateNoteContainer = styled.div`
   h1 {
     ${tw`font-marker`}
   }
@@ -9,9 +9,9 @@ const CNhome = styled.div`
 
 export default function CreateNoteHome() {
   return (
-    <CNhome>
+    <CreateNoteContainer>
       <h1>New Note</h1>
       <NoteForm />
-    </CNhome>
+    </CreateNoteContainer>
   );
 }

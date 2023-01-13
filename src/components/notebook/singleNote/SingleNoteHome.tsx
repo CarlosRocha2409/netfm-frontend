@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { styled } from "twin.macro";
 import Note from "../Note";
 
-const SNContainer = styled.div``;
+const SingleNoteContainer = styled.div``;
 
 export default function SingleNoteHome() {
   const { noteId } = useParams();
@@ -11,8 +11,8 @@ export default function SingleNoteHome() {
     id: noteId ? +noteId : 1,
   });
   return (
-    <SNContainer>
+    <SingleNoteContainer>
       {!isLoading && data !== undefined && <Note note={data} />}
-    </SNContainer>
+    </SingleNoteContainer>
   );
 }
