@@ -6,7 +6,7 @@ import Note from "./Note";
 import Loader from "../general/Loading";
 import QueryForm from "./queryForm/QueryForm";
 
-const NBContainer = styled.div`
+const NotebookContainer = styled.div`
   ${tw`h-full flex flex-col gap-4`}
   .infinite-scroll-component {
     ::-webkit-scrollbar {
@@ -14,7 +14,7 @@ const NBContainer = styled.div`
     }
   }
 `;
-const NFormContainer = styled.div``;
+const NoteFormContainer = styled.div``;
 const NoteList = styled.div`
   ${tw`grid gap-9 md:gap-[0.5rem]`}
 `;
@@ -25,10 +25,10 @@ export default function NoteBookHome() {
   const formRef = useRef<HTMLDivElement>(null);
 
   return (
-    <NBContainer ref={containerRef}>
-      <NFormContainer ref={formRef}>
+    <NotebookContainer ref={containerRef}>
+      <NoteFormContainer ref={formRef}>
         <QueryForm sync={refetch} />
-      </NFormContainer>
+      </NoteFormContainer>
       <InfiniteScroll
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
@@ -47,6 +47,6 @@ export default function NoteBookHome() {
             notes.items.map((note) => <Note key={note.id} note={note} />)}
         </NoteList>
       </InfiniteScroll>
-    </NBContainer>
+    </NotebookContainer>
   );
 }

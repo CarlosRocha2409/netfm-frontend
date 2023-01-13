@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import tw, { styled } from "twin.macro";
 import NoteForm from "../NoteForm";
 
-const ENhome = styled.div`
+const NoteEditContainer = styled.div`
   h1 {
     ${tw`font-marker`}
   }
@@ -16,9 +16,9 @@ export default function NoteEditHome() {
   });
 
   return (
-    <ENhome>
+    <NoteEditContainer>
       <h1>Edit Note</h1>
       {!isLoading && data && <NoteForm note={data} />}
-    </ENhome>
+    </NoteEditContainer>
   );
 }

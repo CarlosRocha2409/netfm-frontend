@@ -5,7 +5,7 @@ export interface INote {
   id: number;
   title: string;
   body: string;
-  creation: Date;
+  date: Date;
   topic: ITopic;
 }
 
